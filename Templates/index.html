@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VibeGuard | AI Security Platform</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 20%, #183b6b 0%, transparent 35%),
+                radial-gradient(circle at 90% 80%, #40195f 0%, transparent 35%),
+                #070b14;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* TOP BAR */
+
+        .topbar {
+            height: 75px;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            background: rgba(5,8,18,0.75);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: #45d9ff;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #9eeeff;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            background: #35e69a;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #35e69a;
+        }
+
+        /* MAIN */
+
+        .main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 30px;
+        }
+
+        .hero {
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            letter-spacing: 5px;
+            background: linear-gradient(90deg, #ffffff, #45d9ff, #a66cff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            margin-top: 12px;
+            color: #9da9bd;
+            font-size: 17px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 18px;
+            border: 1px solid #45d9ff;
+            border-radius: 30px;
+            color: #45d9ff;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* NETWORK FLOW */
+
+        .network {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .node {
+            padding: 12px 18px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(69,217,255,0.3);
+            border-radius: 10px;
+            color: #cfefff;
+            font-size: 12px;
+        }
+
+        .arrow {
+            color: #45d9ff;
+            font-size: 20px;
+        }
+
+        /* VENDOR SECTION */
+
+        .section-title {
+            margin-top: 55px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #dce6f7;
+        }
+
+        .vendors {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .vendor {
+            position: relative;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.055);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .vendor::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: #45d9ff;
+            filter: blur(70px);
+            opacity: 0;
+            top: -50px;
+            right: -40px;
+            transition: 0.3s;
+        }
+
+        .vendor:hover {
+            transform: translateY(-7px);
+            border-color: #45d9ff;
+            box-shadow: 0 0 30px rgba(69,217,255,0.18);
+        }
+
+        .vendor:hover::before {
+            opacity: 0.35;
+        }
+
+        .vendor.selected {
+            border-color: #45d9ff;
+            background: rgba(69,217,255,0.12);
+            box-shadow: 0 0 25px rgba(69,217,255,0.2);
+        }
+
+        .vendor-icon {
+            width: 55px;
+            height: 55px;
+            margin: auto;
+            margin-bottom: 18px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #163e64, #5a2377);
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .vendor h3 {
+            font-size: 17px;
+        }
+
+        .vendor p {
+            margin-top: 8px;
+            color: #8795aa;
+            font-size: 12px;
+        }
+
+        /* CONNECT */
+
+        .connect-area {
+            text-align: center;
+            margin-top: 38px;
+        }
+
+        .connect {
+            padding: 16px 55px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #1da9e8, #7657e8);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(69,217,255,0.25);
+            transition: 0.3s;
+        }
+
+        .connect:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(69,217,255,0.45);
+        }
+
+        .hint {
+            margin-top: 12px;
+            color: #68758a;
+            font-size: 11px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            .vendors {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .topbar {
+                padding: 0 25px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <div class="logo">
+            VIBE<span>GUARD</span>
+        </div>
+
+        <div class="status">
+            <div class="dot"></div>
+            PLATFORM ONLINE
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <div class="hero">
+
+            <div class="tag">
+                AI-POWERED SECURITY & COMPLIANCE
+            </div>
+
+            <h1>VIBEGUARD</h1>
+
+            <p>
+                Intelligent Multi-Vendor Security Configuration Analysis
+            </p>
+
+        </div>
+
+
+        <!-- NETWORK FLOW -->
+
+        <div class="network">
+
+            <div class="node">COMPANY NETWORK</div>
+
+            <div class="arrow">→</div>
+
+            <div class="node">CONNECTORS</div>
+
+            <div class="arrow">→</div>
+
+            <div class="node">CONFIGURATION</div>
+
+            <div class="arrow">→</div>
+
+            <div class="node">VIBEGUARD AI</div>
+
+        </div>
+
+
+        <!-- VENDORS -->
+
+        <div class="section-title">
+            Select Infrastructure Vendor
+        </div>
+
+
+        <div class="vendors">
+
+            <button class="vendor"
+                    onclick="selectVendor(this, 'Cisco')">
+
+                <div class="vendor-icon">
+                    C
+                </div>
+
+                <h3>Cisco</h3>
+
+                <p>Network Infrastructure</p>
+
+            </button>
+
+
+            <button class="vendor"
+                    onclick="selectVendor(this, 'Fortinet')">
+
+                <div class="vendor-icon">
+                    F
+                </div>
+
+                <h3>Fortinet</h3>
+
+                <p>Firewall Security</p>
+
+            </button>
+
+
+            <button class="vendor"
+                    onclick="selectVendor(this, 'Palo Alto')">
+
+                <div class="vendor-icon">
+                    P
+                </div>
+
+                <h3>Palo Alto</h3>
+
+                <p>Next-Gen Firewall</p>
+
+            </button>
+
+
+            <button class="vendor"
+                    onclick="selectVendor(this, 'AWS')">
+
+                <div class="vendor-icon">
+                    A
+                </div>
+
+                <h3>AWS</h3>
+
+                <p>Cloud Infrastructure</p>
+
+            </button>
+
+        </div>
+
+
+        <!-- CONNECT -->
+
+        <div class="connect-area">
+
+            <button class="connect"
+                    onclick="connectVendor()">
+
+                CONNECT VENDOR
+
+            </button>
+
+            <div class="hint">
+                Select a vendor to begin secure configuration analysis
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let selectedVendor = "";
+
+        function selectVendor(button, vendor) {
+
+            document.querySelectorAll(".vendor").forEach(function(btn) {
+                btn.classList.remove("selected");
+            });
+
+            button.classList.add("selected");
+
+            selectedVendor = vendor;
+        }
+
+
+        function connectVendor() {
+
+            if (selectedVendor === "") {
+
+                alert("Please select a vendor first.");
+
+                return;
+            }
+
+            window.location.href =
+                "/configuration/" + encodeURIComponent(selectedVendor);
+
+        }
+
+    </script>
+
+</body>
+
+</html>

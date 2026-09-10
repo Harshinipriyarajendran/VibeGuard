@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VibeGuard Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 20%, #173b70, transparent 35%),
+                radial-gradient(circle at 85% 80%, #54206d, transparent 35%),
+                #070b16;
+            color: white;
+        }
+
+        .topbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 45px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: #45d9ff;
+        }
+
+        .status {
+            color: #35e69a;
+            font-size: 12px;
+        }
+
+        .container {
+            padding: 40px 55px;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #8e9bb0;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* SCORE CARDS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            padding: 25px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(15px);
+        }
+
+        .stat-title {
+            color: #8e9bb0;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 30px;
+            font-weight: bold;
+            color: #64748b;
+        }
+
+        .stat-status {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        /* VENDOR SECTION */
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .vendors {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .vendor-card {
+            padding: 25px;
+            min-height: 190px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: 0.3s;
+        }
+
+        .vendor-card:hover {
+            transform: translateY(-5px);
+            border-color: #45d9ff;
+            box-shadow: 0 0 25px rgba(69,217,255,0.15);
+        }
+
+        .vendor-name {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .vendor-description {
+            color: #8e9bb0;
+            font-size: 12px;
+            line-height: 1.5;
+            min-height: 45px;
+        }
+
+        .select-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #159bd7, #7657e8);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .select-btn:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 900px) {
+            .stats,
+            .vendors {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats,
+            .vendors {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 25px;
+            }
+
+            .topbar {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="logo">
+            VIBE<span>GUARD</span>
+        </div>
+
+        <div class="status">
+            ● PLATFORM ONLINE
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="title">
+            Security Dashboard
+        </div>
+
+        <div class="subtitle">
+            AI-powered security and compliance monitoring
+        </div>
+
+
+        <!-- SCORE CARDS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="stat-title">
+                    SECURITY SCORE
+                </div>
+
+                <div class="stat-value">
+                    -- / 100
+                </div>
+
+                <div class="stat-status">
+                    Not Scanned
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-title">
+                    COMPLIANCE SCORE
+                </div>
+
+                <div class="stat-value">
+                    -- %
+                </div>
+
+                <div class="stat-status">
+                    Not Scanned
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-title">
+                    CRITICAL ISSUES
+                </div>
+
+                <div class="stat-value">
+                    --
+                </div>
+
+                <div class="stat-status">
+                    Not Scanned
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- VENDOR SECTION -->
+
+        <div class="section-title">
+            Select Network / Cloud Vendor
+        </div>
+
+
+        <div class="vendors">
+
+            <!-- CISCO -->
+
+            <div class="vendor-card">
+
+                <div class="vendor-name">
+                    Cisco
+                </div>
+
+                <div class="vendor-description">
+                    Network devices, routers, switches and firewalls.
+                </div>
+
+                <button class="select-btn"
+                        onclick="selectVendor('Cisco')">
+                    SELECT
+                </button>
+
+            </div>
+
+
+            <!-- FORTINET -->
+
+            <div class="vendor-card">
+
+                <div class="vendor-name">
+                    Fortinet
+                </div>
+
+                <div class="vendor-description">
+                    Firewall and network security infrastructure.
+                </div>
+
+                <button class="select-btn"
+                        onclick="selectVendor('Fortinet')">
+                    SELECT
+                </button>
+
+            </div>
+
+
+            <!-- PALO ALTO -->
+
+            <div class="vendor-card">
+
+                <div class="vendor-name">
+                    Palo Alto
+                </div>
+
+                <div class="vendor-description">
+                    Next-generation firewall and security platform.
+                </div>
+
+                <button class="select-btn"
+                        onclick="selectVendor('Palo Alto')">
+                    SELECT
+                </button>
+
+            </div>
+
+
+            <!-- AWS -->
+
+            <div class="vendor-card">
+
+                <div class="vendor-name">
+                    AWS
+                </div>
+
+                <div class="vendor-description">
+                    Cloud infrastructure and security configuration.
+                </div>
+
+                <button class="select-btn"
+                        onclick="selectVendor('AWS')">
+                    SELECT
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function selectVendor(vendor) {
+
+            window.location.href =
+                "/configuration/" + encodeURIComponent(vendor);
+
+        }
+
+    </script>
+
+</body>
+</html>

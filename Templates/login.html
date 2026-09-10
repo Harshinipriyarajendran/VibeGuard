@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VibeGuard Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 20% 20%, #173b70, transparent 35%),
+                radial-gradient(circle at 80% 80%, #54206d, transparent 35%),
+                #070b16;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .login-box {
+            width: 420px;
+            padding: 45px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 50px rgba(0,180,255,0.15);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .logo span {
+            color: #45d9ff;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8e9bb0;
+            margin: 10px 0 35px;
+            font-size: 13px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #cbd5e5;
+            font-size: 13px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 9px;
+            border: 1px solid #34445d;
+            background: rgba(0,0,0,0.25);
+            color: white;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #45d9ff;
+            box-shadow: 0 0 12px rgba(69,217,255,0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            border: none;
+            border-radius: 9px;
+            background: linear-gradient(90deg, #159bd7, #7657e8);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .login-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .security {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 11px;
+            color: #68778e;
+        }
+
+        .status {
+            text-align: center;
+            color: #35e69a;
+            font-size: 11px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="logo">
+            VIBE<span>GUARD</span>
+        </div>
+
+        <div class="subtitle">
+            AI SECURITY & COMPLIANCE PLATFORM
+        </div>
+
+        <form onsubmit="login(event)">
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button class="login-btn" type="submit">
+                SECURE LOGIN
+            </button>
+
+        </form>
+
+        <div class="status">
+            ● SECURITY SYSTEM ONLINE
+        </div>
+
+        <div class="security">
+            Protected access to VibeGuard infrastructure
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function login(event) {
+
+            event.preventDefault();
+
+            const username =
+                document.getElementById("username").value;
+
+            const password =
+                document.getElementById("password").value;
+
+            if (username !== "" && password !== "") {
+
+                window.location.href = "/dashboard";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
